@@ -66,7 +66,7 @@ const app = Vue.createApp({
             this.roundNr++
         },
         monsterAttack(){
-            this.attackValue = this.randomNumber(12, 8)
+            this.attackValue = this.randomNumber(14, 6)
             setTimeout(() => {
                 this.userHealth -= this.attackValue
             }, 350);
@@ -81,7 +81,7 @@ const app = Vue.createApp({
             console.log(this.roundNr);
         },  
         heal(){
-            this.healValue = this.randomNumber(14, 9)
+            this.healValue = this.randomNumber(18, 12)
             if(this.userHealth + this.healValue > 100){
                 this.userHealth = 100
             }else{
