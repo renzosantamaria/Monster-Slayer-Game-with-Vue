@@ -73,9 +73,9 @@ const app = Vue.createApp({
             this.healValue = this.randomNumber(14, 9)
             if(this.userHealth + this.healValue > 100){
                 this.userHealth = 100
-            }
             }else{
                 this.userHealth += this.healValue
+            }
             this.monsterAttack()
             this.roundNr++
         },
