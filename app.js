@@ -5,7 +5,7 @@ const app = Vue.createApp({
             userHealth: 100,
             attackValue: 0,
             healValue: 0,
-            roundNr: 0,
+            roundNr: 3,
             active : true,
             result : ""
         }
@@ -20,7 +20,13 @@ const app = Vue.createApp({
             return {width: this.userHealth + '%'}
         },
         disabledAttack(){
-            return this.roundNr % 3 != 0
+            // return this.roundNr % 3 != 0
+            if (this.roundNr < 3) {
+                return true
+            }else{
+                return false
+            }
+            
         }
     },
 
@@ -61,14 +67,19 @@ const app = Vue.createApp({
         },
         monsterAttack(){
             this.attackValue = this.randomNumber(12, 8)
-            this.userHealth -= this.attackValue
+            setTimeout(() => {
+                this.userHealth -= this.attackValue
+            }, 350);
+                
         },
         specialAttack(){
             this.attackValue = this.randomNumber(18, 10)
             this.monsterHealth -= this.attackValue
             this.monsterAttack()
-            this.roundNr++
-        },
+            // this.roundNr++
+            this.roundNr = 0
+            console.log(this.roundNr);
+        },  
         heal(){
             this.healValue = this.randomNumber(14, 9)
             if(this.userHealth + this.healValue > 100){
@@ -87,7 +98,7 @@ const app = Vue.createApp({
             this.userHealth = 100
             this.attackValue = 0
             this.healValue = 0
-            this.roundNr = 0
+            this.roundNr = 3
             this.active = true
             this.result = ""
         }
