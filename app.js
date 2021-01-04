@@ -6,7 +6,7 @@ const app = Vue.createApp({
             attackValue: 0,
             healValue: 0,
             roundNr: 3,
-            active : false,
+            gameOver : false,
             result : "",
             userHealthBarColor : "#00a876",
             monsterHealthBarColor: "#00a876",
@@ -29,8 +29,8 @@ const app = Vue.createApp({
                 return false
             }
         },
-        active(){
-            return this.active
+        gameOver(){
+            return this.gameOver
         }
             
     },
@@ -48,7 +48,7 @@ const app = Vue.createApp({
             }
             this.userHealth < 0 ? this.userHealth = 0 : ""
             if (this.userHealth == 0) {
-                this.active = true
+                this.gameOver = true
                 this.result = "You lost!"
             }
             if (this.userHealth == 0 && this.monsterHealth == 0) {
@@ -68,7 +68,7 @@ const app = Vue.createApp({
             }
             this.monsterHealth < 0 ? this.monsterHealth = 0 : ""
             if (this.monsterHealth == 0) {
-                this.active = false
+                this.gameOver = true
                 this.result = "You won!"
             }
             if (this.userHealth == 0 && this.monsterHealth == 0) {
@@ -128,7 +128,7 @@ const app = Vue.createApp({
             this.attackValue = 0
             this.healValue = 0
             this.roundNr = 3
-            this.active = false
+            this.gameOver = false
             this.result = ""
             this.logs = []
         },

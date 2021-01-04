@@ -34,7 +34,7 @@
         <p>Hp: <span :style="{color: userHealthBarColor}">{{userHealth}}</span></p>
       </section>
 
-      <section v-if="active"  id="resultBoard" class="container">
+      <section v-if="gameOver"  id="resultBoard" class="container">
         <h2>GAME OVER</h2>
         <h3>{{result}}</h3>
         <button @click="restart" >RESTART THE GAME</button>
