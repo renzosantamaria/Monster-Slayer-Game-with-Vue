@@ -10,7 +10,8 @@ const app = Vue.createApp({
             result : "",
             userHealthBarColor : "#00a876",
             monsterHealthBarColor: "#00a876",
-            logs : []
+            logs : [],
+            logMessage: ""
         }
     },
 
@@ -85,17 +86,22 @@ const app = Vue.createApp({
         userAttack(){
             this.attackValue = this.randomNumber(12, 6)
             this.monsterHealth -= this.attackValue
-            this.logs.unshift(this.battleLog("You ", "attacked for ",this.attackValue))
-
+            // this.logs.unshift(this.battleLog("You ", "attacked for ",this.attackValue))
+            this.logMessage = this.battleLog("You ", "attacked for ",this.attackValue) + " and " 
+            console.log(this.logMessage);
             this.monsterAttack()
             this.roundNr++
 
             // this.m = battleLog(user,this.attacked,this.attackValue)
-            console.log(this.logs);
+            // console.log(this.logs);
         },
         monsterAttack(){
             this.attackValue = this.randomNumber(14, 6)
-            this.logs.unshift(this.battleLog("The monster ", "attacked you for ",this.attackValue))
+            // this.logs.unshift(this.battleLog("The monster ", "attacked you for ",this.attackValue))
+            this.logMessage += this.battleLog("The monster ", "attacked you for ",this.attackValue)
+            console.log(this.logMessage);
+            this.logs.unshift(this.logMessage)
+            this.logMessage = ""
             setTimeout(() => {
                 this.userHealth -= this.attackValue
             }, 350);
@@ -111,7 +117,8 @@ const app = Vue.createApp({
         },  
         heal(){
             this.healValue = this.randomNumber(18, 12)
-            this.logs.unshift(this.battleLog("You ", "healed for ",this.healValue))
+            // this.logs.unshift(this.battleLog("You ", "healed for ",this.healValue))
+            this.logMessage = this.battleLog("You ", "healed for ",this.healValue) + " and "
             if(this.userHealth + this.healValue > 100){
                 this.userHealth = 100
             }else{
