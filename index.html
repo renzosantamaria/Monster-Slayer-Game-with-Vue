@@ -49,7 +49,12 @@
 
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul>
+          <li v-for="log in logs" >
+            {{log}}
+          </li>
+          
+        </ul>
       </section>
 
     </div>
