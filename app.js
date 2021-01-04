@@ -7,17 +7,20 @@ const app = Vue.createApp({
             healValue: 0,
             roundNr: 3,
             active : true,
-            result : ""
+            result : "",
+            userHealthBarColor : "#00a876",
+            monsterHealthBarColor: "#00a876"
         }
     },
 
     computed: {
         monsterHealthBar(){
-            return {width: this.monsterHealth + '%'}
+            return {width: this.monsterHealth + '%', backgroundColor: this.monsterHealthBarColor }
+            // return {backgroundColor: this.orange}
         },
         userHealthBar(){
             // return this.userHealth + '%'
-            return {width: this.userHealth + '%'}
+            return {width: this.userHealth + '%', backgroundColor: this.userHealthBarColor}
         },
         disabledAttack(){
             // return this.roundNr % 3 != 0
@@ -32,6 +35,12 @@ const app = Vue.createApp({
 
     watch:{
         userHealth(){
+            if (this.userHealth < 60) {
+                this.userHealthBarColor = "orange"
+            }
+            if (this.userHealth < 25) {
+                this.userHealthBarColor = "red"
+            }
             this.userHealth < 0 ? this.userHealth = 0 : ""
             if (this.userHealth == 0) {
                 this.active = false
@@ -41,7 +50,14 @@ const app = Vue.createApp({
                 this.result = "It's a draw!"
             }
         },
+        
         monsterHealth(){
+            if (this.monsterHealth < 60) {
+                this.monsterHealthBarColor = "orange"
+            }
+            if (this.monsterHealth < 25) {
+                this.monsterHealthBarColor = "red"
+            }
             this.monsterHealth < 0 ? this.monsterHealth = 0 : ""
             if (this.monsterHealth == 0) {
                 this.active = false
@@ -60,7 +76,7 @@ const app = Vue.createApp({
         },
 
         userAttack(){
-            this.attackValue = this.randomNumber(10, 5)
+            this.attackValue = this.randomNumber(12, 6)
             this.monsterHealth -= this.attackValue
             this.monsterAttack()
             this.roundNr++

@@ -23,6 +23,7 @@
         <div class="healthbar">
           <div :style='monsterHealthBar' class="healthbar__value"></div>
         </div>
+        <p>Hp: {{monsterHealth}}</p>
       </section>
 
       <section id="player" class="container">
@@ -30,6 +31,7 @@
         <div class="healthbar">
           <div :style="userHealthBar" class="healthbar__value"></div>
         </div>
+        <p>Hp: {{userHealth}}</p>
       </section>
 
       <section v-if="active == false" id="resultBoard" class="container">
