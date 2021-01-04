@@ -34,13 +34,13 @@
         <p>Hp: <span :style="{color: userHealthBarColor}">{{userHealth}}</span></p>
       </section>
 
-      <section v-if="active == false" id="resultBoard" class="container">
+      <section v-if="active" id="resultBoard" class="container">
         <h2>GAME OVER</h2>
         <h3>{{result}}</h3>
         <button @click="restart" >RESTART THE GAME</button>
       </section>
 
-      <section v-if="active == true" id="controls">
+      <section v-else id="controls">
         <button @click="userAttack" >ATTACK</button>
         <button :disabled="disabledAttack" @click="specialAttack" >SPECIAL ATTACK</button>
         <button @click="heal">HEAL</button>

@@ -18,21 +18,21 @@ const app = Vue.createApp({
     computed: {
         monsterHealthBar(){
             return {width: this.monsterHealth + '%', backgroundColor: this.monsterHealthBarColor }
-            // return {backgroundColor: this.orange}
         },
         userHealthBar(){
-            // return this.userHealth + '%'
             return {width: this.userHealth + '%', backgroundColor: this.userHealthBarColor}
         },
         disabledAttack(){
-            // return this.roundNr % 3 != 0
             if (this.roundNr < 3) {
                 return true
             }else{
                 return false
             }
-            
+        },
+        active(){
+            return this.active
         }
+            
     },
 
     watch:{
@@ -86,20 +86,13 @@ const app = Vue.createApp({
         userAttack(){
             this.attackValue = this.randomNumber(12, 6)
             this.monsterHealth -= this.attackValue
-            // this.logs.unshift(this.battleLog("You ", "attacked for ",this.attackValue))
             this.logMessage = this.battleLog("You ", "attacked for ",this.attackValue) + " AND " 
-            console.log(this.logMessage);
             this.monsterAttack()
             this.roundNr++
-
-            // this.m = battleLog(user,this.attacked,this.attackValue)
-            // console.log(this.logs);
         },
         monsterAttack(){
             this.attackValue = this.randomNumber(14, 6)
-            // this.logs.unshift(this.battleLog("The monster ", "attacked you for ",this.attackValue))
             this.logMessage += this.battleLog("The monster ", "attacked you for ",this.attackValue)
-            console.log(this.logMessage);
             this.logs.unshift(this.logMessage)
             this.logMessage = ""
             setTimeout(() => {
@@ -112,13 +105,11 @@ const app = Vue.createApp({
             this.monsterHealth -= this.attackValue
             this.logMessage = this.battleLog("You ", "Super attacked for ",this.attackValue) + " AND "
             this.monsterAttack()
-            // this.roundNr++
             this.roundNr = 0
             console.log(this.roundNr);
         },  
         heal(){
             this.healValue = this.randomNumber(18, 12)
-            // this.logs.unshift(this.battleLog("You ", "healed for ",this.healValue))
             this.logMessage = this.battleLog("You ", "healed for ",this.healValue) + " AND "
             if(this.userHealth + this.healValue > 100){
                 this.userHealth = 100
