@@ -110,6 +110,7 @@ const app = Vue.createApp({
         specialAttack(){
             this.attackValue = this.randomNumber(18, 10)
             this.monsterHealth -= this.attackValue
+            this.logMessage = this.battleLog("You ", "Super attacked for ",this.attackValue) + " and "
             this.monsterAttack()
             // this.roundNr++
             this.roundNr = 0
@@ -138,6 +139,7 @@ const app = Vue.createApp({
             this.roundNr = 3
             this.active = true
             this.result = ""
+            this.logs = []
         },
         battleLog(who,action,value){
             return who + action + value
