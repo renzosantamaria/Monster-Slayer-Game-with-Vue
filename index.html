@@ -23,7 +23,7 @@
         <div class="healthbar">
           <div :style='monsterHealthBar' class="healthbar__value"></div>
         </div>
-        <p>Hp: {{monsterHealth}}</p>
+        <p>Hp: <span :style="{color: monsterHealthBarColor}">{{monsterHealth}}</span></p>
       </section>
 
       <section id="player" class="container">
@@ -31,11 +31,12 @@
         <div class="healthbar">
           <div :style="userHealthBar" class="healthbar__value"></div>
         </div>
-        <p>Hp: {{userHealth}}</p>
+        <p>Hp: <span :style="{color: userHealthBarColor}">{{userHealth}}</span></p>
       </section>
 
       <section v-if="active == false" id="resultBoard" class="container">
-        <h2>{{result}}</h2>
+        <h2>GAME OVER</h2>
+        <h3>{{result}}</h3>
         <button @click="restart" >RESTART THE GAME</button>
       </section>
 

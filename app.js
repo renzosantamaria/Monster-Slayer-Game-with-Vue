@@ -35,6 +35,9 @@ const app = Vue.createApp({
 
     watch:{
         userHealth(){
+            if (this.userHealth > 60) {
+                this.userHealthBarColor = "#00a876"
+            }
             if (this.userHealth < 60) {
                 this.userHealthBarColor = "orange"
             }
@@ -52,6 +55,9 @@ const app = Vue.createApp({
         },
         
         monsterHealth(){
+            if (this.monsterHealth > 60) {
+                this.monsterHealthBarColor = "#00a876"
+            }
             if (this.monsterHealth < 60) {
                 this.monsterHealthBarColor = "orange"
             }
