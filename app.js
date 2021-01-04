@@ -87,7 +87,7 @@ const app = Vue.createApp({
             this.attackValue = this.randomNumber(12, 6)
             this.monsterHealth -= this.attackValue
             // this.logs.unshift(this.battleLog("You ", "attacked for ",this.attackValue))
-            this.logMessage = this.battleLog("You ", "attacked for ",this.attackValue) + " and " 
+            this.logMessage = this.battleLog("You ", "attacked for ",this.attackValue) + " AND " 
             console.log(this.logMessage);
             this.monsterAttack()
             this.roundNr++
@@ -110,7 +110,7 @@ const app = Vue.createApp({
         specialAttack(){
             this.attackValue = this.randomNumber(18, 10)
             this.monsterHealth -= this.attackValue
-            this.logMessage = this.battleLog("You ", "Super attacked for ",this.attackValue) + " and "
+            this.logMessage = this.battleLog("You ", "Super attacked for ",this.attackValue) + " AND "
             this.monsterAttack()
             // this.roundNr++
             this.roundNr = 0
@@ -119,7 +119,7 @@ const app = Vue.createApp({
         heal(){
             this.healValue = this.randomNumber(18, 12)
             // this.logs.unshift(this.battleLog("You ", "healed for ",this.healValue))
-            this.logMessage = this.battleLog("You ", "healed for ",this.healValue) + " and "
+            this.logMessage = this.battleLog("You ", "healed for ",this.healValue) + " AND "
             if(this.userHealth + this.healValue > 100){
                 this.userHealth = 100
             }else{
